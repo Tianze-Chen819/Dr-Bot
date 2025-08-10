@@ -59,8 +59,8 @@ print(m.predict("I’ve had a cough for 7 days—what should I do?"))
 ```
 
 ## 5.Troubleshooting
-1.Gated model (401): use an open base (Qwen/Qwen2.5-3B/1.5B) or huggingface-cli login and accept the license for the gated model.
-2.No output / slow first token: try the 1.5B base and keep max_new_tokens small.
+1.Gated model (401): use an open base (Qwen/Qwen2.5-3B/1.5B) or huggingface-cli login and accept the license for the gated model.  
+2.No output / slow first token: try the 1.5B base and keep max_new_tokens small.  
 3.Check devices:
 ```bash
 python - <<'PY'
