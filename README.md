@@ -2,8 +2,8 @@
 — Patient Q&A LLM (Local)
 
 Repo Structure
-bash
-perl```
+perl
+```
 Dr-Bot/
 ├─ package/
 │  ├─ __init__.py          # Model.predict(str) -> str
@@ -15,4 +15,5 @@ Dr-Bot/
 ├─ training_data.csv       # Question,Physician Response
 ├─ baseline.ipynb
 └─ Dr.Bot.pdf
+Quick Start (Inference)
 ```
