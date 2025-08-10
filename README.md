@@ -1,5 +1,7 @@
 # Dr-Bot
 — Patient Q&A LLM (Local)
+## Maintainer
+Tianze Chen  
 
 ## 1.Repo Structure
 ```
@@ -37,3 +39,32 @@ setx DRBOT_BASE "Qwen/Qwen2.5-3B-Instruct"     # on Windows
 # macOS/Linux: export DRBOT_BASE="Qwen/Qwen2.5-3B-Instruct"
 python -u inference_cli.py
 ```
+## 3.Training (QLoRA)
+Ensure training_data.csv has columns:
+
+Question,Physician Response  
+
+Train:
+```bash
+export DRBOT_BASE="Qwen/Qwen2.5-3B-Instruct"   # match your inference base
+python train_local_cuda.py
+```
+LoRA adapters are saved to package/assets/lora/. Inference will auto-load them.
+
+## 4.Programmatic Use
+```python
+from package import Model
+m = Model()
+print(m.predict("I’ve had a cough for 7 days—what should I do?"))
+```
+
+## 5.Troubleshooting
+1.Gated model (401): use an open base (Qwen/Qwen2.5-3B/1.5B) or huggingface-cli login and accept the license for the gated model.
+2.No output / slow first token: try the 1.5B base and keep max_new_tokens small.
+3.Check devices:
+```bash
+python - <<'PY'
+import torch; print("cuda:", torch.cuda.is_available(), "mps:", torch.backends.mps.is_available())
+PY
+```
+
